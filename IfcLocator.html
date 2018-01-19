@@ -21,17 +21,54 @@
             top: 5px;
             left: 5px;
         }
+
+      #progress_bar 
+      {
+        margin: 10px 0;
+        padding: 3px;
+        border: 1px solid #000;
+        font-size: 14px;
+        clear: both;
+        opacity: 0;
+        /*background-color: #f00;*/
+        -moz-transition: opacity 1s linear;
+        -o-transition: opacity 1s linear;
+        -webkit-transition: opacity 1s linear;
+      }
+      #progress_bar.loading 
+      {
+        opacity: 1.0;
+      }
+      #progress_bar .percent 
+      {
+        background-color: #b3ffb3;
+        height: auto;
+        width: 0;
+      }
+
+      .panel-body 
+      {
+        background:#ffffff;
+      }
+
   </style>
 </head>
 <body>
   <div id="cesiumContainer"></div>
   <div class="toolbar-left">
-    <input type="file" id="files" name="files[]" multiple />
-    <output id="list"></output>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <input type="file" id="files" name="files[]" multiple />
+        <output id="list"></output>
+      </div>
+    </div>
     <input id="FlyToModel" type="button" value="Fly to Model" onclick="FlyToMyModel();" />
-    <input id="MoveModel" type="button" value="Change location" onclick="ChangeModelLocation();" />
+    <input id="MoveModel" type="button" value="Change Location" onclick="ChangeModelLocation();" />
+    <input id="Export" type="button" value="Export New Location" onclick="ExportLocation();" />
+    <div id="progress_bar"><div class="percent">0%</div></div>
     <!-- <button onclick="alert('You clicked!');">Click me!</button> -->
   </div>
+  <script src="FileSaver.js"></script>
   <script src="IfcLocator.js"></script>
 </body>
 </html>
